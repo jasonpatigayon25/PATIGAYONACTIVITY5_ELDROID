@@ -8,11 +8,12 @@
 
     <Button
         android:id="@+id/button_take_picture"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Take Picture"
-        android:layout_marginBottom="16dp"
+        android:minWidth="300dp"
+        android:text="@string/take_picture"
         android:background="@drawable/button_rounded"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
         android:textColor="#FFFFFF"
         app:backgroundTint="@color/black"
@@ -20,26 +21,28 @@
 
     <Button
         android:id="@+id/button_get_location"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get Location"
+        android:minWidth="300dp"
+        android:text="@string/get_location"
+        android:background="@drawable/button_rounded"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/button_take_picture"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/button_rounded"
         android:textColor="#FFFFFF"
         app:backgroundTint="@color/black"
-        android:padding="12dp"
-        />
+        android:padding="12dp"/>
 
     <Button
         android:id="@+id/button_read_storage"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Access Storage"
+        android:minWidth="300dp"
+        android:text="@string/access_storage"
+        android:background="@drawable/button_rounded"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/button_get_location"
         android:layout_marginTop="16dp"
-        android:background="@drawable/button_rounded"
         android:textColor="#FFFFFF"
         app:backgroundTint="@color/black"
         android:padding="12dp"/>

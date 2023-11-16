@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PATIGAYON ACTIVITY 5</string>
+    <string name="take_picture">Take Picture</string>
+    <string name="get_location">Get Location</string>
+    <string name="access_storage">Access Storage</string>
+    <string name="go_to_next_screen">Go to Next Screen</string>
 </resources>

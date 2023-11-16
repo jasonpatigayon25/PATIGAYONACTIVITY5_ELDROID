@@ -11,11 +11,13 @@
         android:id="@+id/button_navigate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go to Second Screen"
-        android:background="@drawable/button_rounded"
         android:layout_marginTop="8dp"
+        android:background="@drawable/button_rounded"
+        android:minWidth="160dp"
+        android:padding="12dp"
+        android:text="@string/go_to_next_screen"
         android:textColor="#FFFFFF"
-        app:backgroundTint="@color/black"
-        android:padding="12dp"/>
+        app:backgroundTint="@color/black" />
+
 
 </LinearLayout>
