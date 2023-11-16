@@ -4,12 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/background_screen">
 
     <Button
         android:id="@+id/button_navigate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go to Second Screen"/>
+        android:text="Go to Second Screen"
+        android:background="@drawable/button_rounded"
+        android:layout_marginTop="8dp"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="@color/black"
+        android:padding="12dp"/>
 
 </LinearLayout>
