@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -13,7 +12,6 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.location.LocationServices
 import com.patigayon.activity5.databinding.ActivitySecondBinding
 
-
 class SecondActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySecondBinding
 
@@ -21,7 +19,7 @@ class SecondActivity : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == AppCompatActivity.RESULT_OK) {
                 // val imageBitmap = result.data?.extras?.get("data") as Bitmap
-                // TODO: Something
+                // TODO: Handle the captured image
                 Toast.makeText(this, "Picture taken successfully!", Toast.LENGTH_LONG).show()
             }
         }
@@ -31,6 +29,15 @@ class SecondActivity : AppCompatActivity() {
             when {
                 isGranted -> performActionBasedOnPermission(currentPermissionRequest)
                 else -> Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    private val openDocument =
+        registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+            uri?.let {
+                Toast.makeText(this, "URI: $uri", Toast.LENGTH_LONG).show()
+                val inputStream = contentResolver.openInputStream(uri)
+                inputStream?.close()
             }
         }
 
@@ -52,8 +59,8 @@ class SecondActivity : AppCompatActivity() {
         }
 
         binding.buttonReadStorage.setOnClickListener {
-            currentPermissionRequest = Manifest.permission.WRITE_EXTERNAL_STORAGE
-            requestPermissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            currentPermissionRequest = Manifest.permission.READ_EXTERNAL_STORAGE
+            requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
         }
     }
 
@@ -61,7 +68,7 @@ class SecondActivity : AppCompatActivity() {
         when (permission) {
             Manifest.permission.CAMERA -> takePicture()
             Manifest.permission.ACCESS_FINE_LOCATION -> getLocation()
-            Manifest.permission.WRITE_EXTERNAL_STORAGE -> performStorageOperation()
+            Manifest.permission.READ_EXTERNAL_STORAGE -> openDocument()
             else -> Toast.makeText(
                 this,
                 "No action defined for this permission",
@@ -97,21 +104,7 @@ class SecondActivity : AppCompatActivity() {
         }
     }
 
-    private fun performStorageOperation() {
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            val storageDir = Environment.getExternalStorageDirectory()
-            val files = storageDir.listFiles()
-            val fileNames = StringBuilder()
-            files?.forEach { file ->
-                fileNames.append(file.name).append("\n")
-            }
-            Toast.makeText(this, "Files: $fileNames", Toast.LENGTH_LONG).show()
-        } else {
-            Toast.makeText(this, "Storage permission is not granted", Toast.LENGTH_SHORT).show()
-        }
+    private fun openDocument() {
+        openDocument.launch(arrayOf("*/*"))
     }
 }
