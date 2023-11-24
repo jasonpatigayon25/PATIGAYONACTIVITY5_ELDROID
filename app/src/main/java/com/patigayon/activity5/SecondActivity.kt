@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.MediaStore
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -61,6 +62,9 @@ class SecondActivity : AppCompatActivity() {
         binding.buttonReadStorage.setOnClickListener {
             currentPermissionRequest = Manifest.permission.READ_EXTERNAL_STORAGE
             requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+        binding.backIcon.setOnClickListener {
+            finish()
         }
     }
 

@@ -6,6 +6,31 @@
     android:padding="16dp"
     android:background="@drawable/background_screen">
 
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/back_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back"
+            android:contentDescription="@string/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+                android:text="@string/second_screen_title"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+
+    </LinearLayout>
+
+
     <Button
         android:id="@+id/button_take_picture"
         android:layout_width="wrap_content"
@@ -16,6 +41,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
         android:textColor="#FFFFFF"
+        android:layout_below="@id/header_layout"
         app:backgroundTint="@color/black"
         android:padding="12dp"/>
 

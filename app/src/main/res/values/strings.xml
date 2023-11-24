@@ -4,4 +4,6 @@
     <string name="get_location">Get Location</string>
     <string name="access_storage">Access Storage</string>
     <string name="go_to_next_screen">Go to Next Screen</string>
+    <string name="second_screen_title">Second Screen</string>
+    <string name="back">Back</string>
 </resources>

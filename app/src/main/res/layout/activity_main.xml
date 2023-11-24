@@ -7,6 +7,7 @@
     tools:context=".MainActivity"
     android:background="@drawable/background_screen">
 
+
     <Button
         android:id="@+id/button_navigate"
         android:layout_width="wrap_content"
